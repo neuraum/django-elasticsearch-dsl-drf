@@ -2,7 +2,7 @@
 Nested filtering backend.
 """
 
-from elasticsearch_dsl.query import Q
+from elasticsearch.dsl.query import Q
 from django.core.exceptions import ImproperlyConfigured
 from django_elasticsearch_dsl import fields
 

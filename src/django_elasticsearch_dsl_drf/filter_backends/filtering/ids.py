@@ -83,10 +83,10 @@ class IdsFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Base queryset.
         :param view: View.
         :type request: rest_framework.request.Request
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type view: rest_framework.viewsets.ReadOnlyModelViewSet
         :return: Updated queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         query_params = self.get_ids_query_params(request)
         _ids = []
@@ -102,10 +102,10 @@ class IdsFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Base queryset.
         :param view: View.
         :type request: rest_framework.request.Request
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type view: rest_framework.viewsets.ReadOnlyModelViewSet
         :return: Updated queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         __ids = self.get_ids_values(request, view)
         if __ids:

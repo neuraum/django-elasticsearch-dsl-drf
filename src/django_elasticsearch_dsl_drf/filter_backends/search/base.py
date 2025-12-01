@@ -76,10 +76,10 @@ class BaseSearchFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Base queryset.
         :param view: View.
         :type request: rest_framework.request.Request
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type view: rest_framework.viewsets.ReadOnlyModelViewSet
         :return: Updated queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         if self.matching not in MATCHING_OPTIONS:
             raise ImproperlyConfigured(

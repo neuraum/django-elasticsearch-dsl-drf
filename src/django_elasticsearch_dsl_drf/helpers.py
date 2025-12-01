@@ -5,9 +5,9 @@ from collections import OrderedDict
 
 from django_elasticsearch_dsl.registries import registry
 
-from elasticsearch_dsl import Search
-from elasticsearch_dsl.connections import connections
-from elasticsearch_dsl.query import MoreLikeThis
+from elasticsearch.dsl import Search
+from elasticsearch.dsl.connections import connections
+from elasticsearch.dsl.query import MoreLikeThis
 
 from six import PY3
 
@@ -109,9 +109,9 @@ def more_like_this(obj,
     :type min_term_freq: int
     :type min_doc_freq: int
     :type max_doc_freq: int
-    :type query: elasticsearch_dsl.query.Q
+    :type query: elasticsearch.dsl.query.Q
     :return: List of objects.
-    :rtype: elasticsearch_dsl.search.Search
+    :rtype: elasticsearch.dsl.search.Search
 
     Example:
 

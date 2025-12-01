@@ -4,7 +4,7 @@ Common filtering backend.
 
 import operator
 
-from elasticsearch_dsl.query import Q
+from elasticsearch.dsl.query import Q
 from rest_framework.filters import BaseFilterBackend
 from django_elasticsearch_dsl import fields
 
@@ -209,11 +209,11 @@ class FilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         return cls.apply_filter(
             queryset=queryset,
@@ -241,11 +241,11 @@ class FilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: mixed: either str or iterable (list, tuple).
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         # If value is a list or a tuple, we use it as is.
         if isinstance(value, (list, tuple)):
@@ -280,11 +280,11 @@ class FilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         return cls.apply_filter(
             queryset=queryset,
@@ -309,11 +309,11 @@ class FilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         return cls.apply_filter(
             queryset=queryset,
@@ -339,11 +339,11 @@ class FilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         _value_lower = value.lower()
         if _value_lower in TRUE_VALUES:
@@ -375,11 +375,11 @@ class FilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         return cls.apply_filter(
             queryset=queryset,
@@ -405,11 +405,11 @@ class FilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         return cls.apply_query(
             queryset=queryset,
@@ -432,11 +432,11 @@ class FilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         return cls.apply_query(
             queryset=queryset,
@@ -459,11 +459,11 @@ class FilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         return cls.apply_query(
             queryset=queryset,
@@ -489,11 +489,11 @@ class FilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         __values = cls.split_lookup_complex_value(value)
         __queries = []
@@ -528,11 +528,11 @@ class FilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         return cls.apply_filter(
             queryset=queryset,
@@ -558,11 +558,11 @@ class FilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         return cls.apply_filter(
             queryset=queryset,
@@ -588,11 +588,11 @@ class FilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         return cls.apply_filter(
             queryset=queryset,
@@ -618,11 +618,11 @@ class FilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         return cls.apply_filter(
             queryset=queryset,
@@ -648,11 +648,11 @@ class FilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         _value_lower = value.lower()
         if _value_lower in TRUE_VALUES:
@@ -688,11 +688,11 @@ class FilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         __values = cls.split_lookup_complex_value(value)
 
@@ -779,10 +779,10 @@ class FilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Base queryset.
         :param view: View.
         :type request: rest_framework.request.Request
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type view: rest_framework.viewsets.ReadOnlyModelViewSet
         :return: Updated queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         filter_query_params = self.get_filter_query_params(request, view)
         for options in filter_query_params.values():

@@ -24,10 +24,10 @@ class VersionsTest(unittest.TestCase):
     def setUp(self):
         pass
 
-    @mock.patch('elasticsearch_dsl.__version__', [6, 3, 0])
+    @mock.patch('elasticsearch.dsl.__version__', [6, 3, 0])
     def test_elasticsearch_dsl_6_3_0(self):
         """
-        Tests as if we were using elasticsearch_dsl==6.3.0.
+        Tests as if we were using elasticsearch.dsl==6.3.0.
         """
         from django_elasticsearch_dsl_drf import versions
         reload(versions)
@@ -60,10 +60,10 @@ class VersionsTest(unittest.TestCase):
         self.assertFalse(versions.ELASTICSEARCH_GTE_7_0)
         self.assertFalse(versions.ELASTICSEARCH_GTE_8_0)
 
-    @mock.patch('elasticsearch_dsl.__version__', [7, 0, 0])
+    @mock.patch('elasticsearch.dsl.__version__', [7, 0, 0])
     def test_elasticsearch_dsl_7_0_0(self):
         """
-        Tests as if we were using elasticsearch_dsl==7.0.0.
+        Tests as if we were using elasticsearch.dsl==7.0.0.
         """
         from django_elasticsearch_dsl_drf import versions
         reload(versions)

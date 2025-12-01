@@ -389,7 +389,7 @@ Required imports
 
     from django.conf import settings
     from django_elasticsearch_dsl import Document, Index, fields
-    from elasticsearch_dsl import analyzer
+    from elasticsearch.dsl import analyzer
 
     from books.models import Book
 

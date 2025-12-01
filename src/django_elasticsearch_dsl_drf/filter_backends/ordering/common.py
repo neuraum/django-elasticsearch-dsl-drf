@@ -162,10 +162,10 @@ class OrderingFilterBackend(BaseFilterBackend, OrderingMixin):
         :param queryset: Base queryset.
         :param view: View.
         :type request: rest_framework.request.Request
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type view: rest_framework.viewsets.ReadOnlyModelViewSet
         :return: Updated queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         ordering_query_params = self.get_ordering_query_params(request, view)
 
@@ -303,10 +303,10 @@ class DefaultOrderingFilterBackend(BaseFilterBackend, OrderingMixin):
         :param queryset: Base queryset.
         :param view: View.
         :type request: rest_framework.request.Request
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type view: rest_framework.viewsets.ReadOnlyModelViewSet
         :return: Updated queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         ordering_query_params = self.get_ordering_query_params(request, view)
 

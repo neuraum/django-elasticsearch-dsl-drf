@@ -67,7 +67,7 @@ Example:
     >>>
     >>>         model = Publisher  # The model associate with this Document
 """
-from elasticsearch_dsl.search import AggsProxy
+from elasticsearch.dsl.search_base import AggsProxy
 
 from django_elasticsearch_dsl_drf.constants import (
     FUNCTIONAL_SUGGESTER_TERM_MATCH,
@@ -194,11 +194,11 @@ class FunctionalSuggesterFilterBackend(BaseFilterBackend, FilterBackendMixin):
     #     :param options: Filter options.
     #     :param value: value to filter on.
     #     :type suggester_name: str
-    #     :type queryset: elasticsearch_dsl.search.Search
+    #     :type queryset: elasticsearch.dsl.search.Search
     #     :type options: dict
     #     :type value: str
     #     :return: Modified queryset.
-    #     :rtype: elasticsearch_dsl.search.Search
+    #     :rtype: elasticsearch.dsl.search.Search
     #     """
     #     return queryset.suggest(
     #         suggester_name,
@@ -219,11 +219,11 @@ class FunctionalSuggesterFilterBackend(BaseFilterBackend, FilterBackendMixin):
     #     :param options: Filter options.
     #     :param value: value to filter on.
     #     :type suggester_name: str
-    #     :type queryset: elasticsearch_dsl.search.Search
+    #     :type queryset: elasticsearch.dsl.search.Search
     #     :type options: dict
     #     :type value: str
     #     :return: Modified queryset.
-    #     :rtype: elasticsearch_dsl.search.Search
+    #     :rtype: elasticsearch.dsl.search.Search
     #     """
     #     return queryset.suggest(
     #         suggester_name,
@@ -261,11 +261,11 @@ class FunctionalSuggesterFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param options: Filter options.
         :param value: value to filter on.
         :type suggester_name: str
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         queryset = queryset.query(
             'prefix',
@@ -289,11 +289,11 @@ class FunctionalSuggesterFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param options: Filter options.
         :param value: value to filter on.
         :type suggester_name: str
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         queryset = queryset.query(
             'match',
@@ -454,10 +454,10 @@ class FunctionalSuggesterFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Base queryset.
         :param view: View.
         :type request: rest_framework.request.Request
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type view: rest_framework.viewsets.ReadOnlyModelViewSet
         :return: Updated queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         # The ``SuggesterFilterBackend`` filter backend shall be used in
         # the ``suggest`` custom view action/route only. Usages outside of the

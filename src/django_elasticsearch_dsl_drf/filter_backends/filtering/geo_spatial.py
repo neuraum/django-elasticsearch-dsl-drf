@@ -22,7 +22,7 @@ The queries in this group are:
   polygon.
 """
 import logging
-from elasticsearch_dsl.query import Q
+from elasticsearch.dsl.query import Q
 from rest_framework.filters import BaseFilterBackend
 
 from six import string_types
@@ -454,11 +454,11 @@ class GeoSpatialFilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         return queryset.query(
             Q(
@@ -474,11 +474,11 @@ class GeoSpatialFilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         return queryset.query(
             Q(
@@ -494,11 +494,11 @@ class GeoSpatialFilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         return queryset.query(
             Q(
@@ -514,11 +514,11 @@ class GeoSpatialFilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Original queryset.
         :param options: Filter options.
         :param value: value to filter on.
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         return queryset.query(
             Q(
@@ -582,10 +582,10 @@ class GeoSpatialFilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Base queryset.
         :param view: View.
         :type request: rest_framework.request.Request
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type view: rest_framework.viewsets.ReadOnlyModelViewSet
         :return: Updated queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         filter_query_params = self.get_filter_query_params(request, view)
         for options in filter_query_params.values():

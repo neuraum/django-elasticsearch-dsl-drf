@@ -376,11 +376,11 @@ class SuggesterFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param options: Filter options.
         :param value: value to filter on.
         :type suggester_name: str
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         return queryset.suggest(
             suggester_name,
@@ -397,11 +397,11 @@ class SuggesterFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param options: Filter options.
         :param value: value to filter on.
         :type suggester_name: str
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         return queryset.suggest(
             suggester_name,
@@ -422,11 +422,11 @@ class SuggesterFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param options: Filter options.
         :param value: value to filter on.
         :type suggester_name: str
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type options: dict
         :type value: str
         :return: Modified queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         completion_kwargs = {
             'field': options['field'],
@@ -543,10 +543,10 @@ class SuggesterFilterBackend(BaseFilterBackend, FilterBackendMixin):
         :param queryset: Base queryset.
         :param view: View.
         :type request: rest_framework.request.Request
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type view: rest_framework.viewsets.ReadOnlyModelViewSet
         :return: Updated queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         # The ``SuggesterFilterBackend`` filter backend shall be used in
         # the ``suggest`` custom view action/route only. Usages outside of the

@@ -59,7 +59,7 @@ are used for versioning (schema follows below):
 - Make it easier to override the `DictionaryProxy` by moving it to the
   scope of the `BaseDocumentViewSet`.
 - Add `tzinfo` check for better date vs datetime determination.
-- Broader `EmptySearch` compatibility with `elasticsearch_dsl.Search`.
+- Broader `EmptySearch` compatibility with `elasticsearch.dsl.Search`.
 - Remove old Django code from docs.
 - Allow more specific targeting for nested sort fields.
 - Add more tests.

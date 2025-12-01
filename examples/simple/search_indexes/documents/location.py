@@ -3,7 +3,7 @@ from django_elasticsearch_dsl import Document, Index, fields
 from django_elasticsearch_dsl_drf.compat import KeywordField, StringField
 from django_elasticsearch_dsl_drf.analyzers import edge_ngram_completion
 from django_elasticsearch_dsl_drf.versions import ELASTICSEARCH_GTE_5_0
-from elasticsearch_dsl import analyzer
+from elasticsearch.dsl import analyzer
 
 from books.models import Location
 

@@ -4,8 +4,8 @@ Faceted search backend.
 import copy
 from collections import defaultdict
 
-from elasticsearch_dsl import TermsFacet
-from elasticsearch_dsl.query import Q
+from elasticsearch.dsl import TermsFacet
+from elasticsearch.dsl.query import Q
 
 from rest_framework.filters import BaseFilterBackend
 
@@ -28,7 +28,7 @@ class FacetedSearchFilterBackend(BaseFilterBackend):
         >>> from django_elasticsearch_dsl_drf.filter_backends import (
         >>>     FacetedSearchFilterBackend
         >>> )
-        >>> from elasticsearch_dsl import TermsFacet, DateHistogramFacet
+        >>> from elasticsearch.dsl import TermsFacet, DateHistogramFacet
         >>> from django_elasticsearch_dsl_drf.viewsets import (
         >>>     BaseDocumentViewSet,
         >>> )
@@ -227,10 +227,10 @@ class FacetedSearchFilterBackend(BaseFilterBackend):
         :param queryset: Base queryset.
         :param view: View.
         :type request: rest_framework.request.Request
-        :type queryset: elasticsearch_dsl.search.Search
+        :type queryset: elasticsearch.dsl.search.Search
         :type view: rest_framework.viewsets.ReadOnlyModelViewSet
         :return: Updated queryset.
-        :rtype: elasticsearch_dsl.search.Search
+        :rtype: elasticsearch.dsl.search.Search
         """
         return self.aggregate(request, queryset, view)
 
