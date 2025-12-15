@@ -920,7 +920,7 @@ class FilteringFilterBackend(BaseFilterBackend, FilterBackendMixin):
                 required=False,
                 location='query',
                 schema=self.get_coreschema_field(
-                    document._fields.get(field_name)
+                    document._doc_type.mapping.properties._params.get(field_name)
                 )
             )
             for field_name in filter_fields

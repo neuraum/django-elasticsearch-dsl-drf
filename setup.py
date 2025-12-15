@@ -159,7 +159,6 @@ install_requires = [
     'six>=1.9',
     'django-nine>=0.2',
     'django-elasticsearch-dsl>=6.4.1',
-    'elasticsearch-dsl',
     'elasticsearch',
     'djangorestframework',
 ]
