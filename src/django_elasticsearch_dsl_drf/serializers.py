@@ -192,7 +192,7 @@ class DocumentSerializer(
         ignore_fields = self.Meta.ignore_fields
         document = self.Meta.document
         model = document.Django.model
-        document_fields = document._doc_type.mapping.properties._params
+        document_fields = document._fields
 
         declared_fields = copy.deepcopy(self._declared_fields)
         field_mapping = OrderedDict()
