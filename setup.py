@@ -161,6 +161,7 @@ install_requires = [
     'django-elasticsearch-dsl>=6.4.1',
     'elasticsearch',
     'djangorestframework',
+    'packaging',
 ]
 
 extras_require = []

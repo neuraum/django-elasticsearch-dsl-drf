@@ -3,7 +3,7 @@ Contains information about the current Elasticsearch version in use,
 including (LTE and GTE).
 """
 
-from distutils.version import LooseVersion
+from packaging.version import Version as LooseVersion
 
 __title__ = 'django_elasticsearch_dsl_drf.versions'
 __author__ = 'Artur Barseghyan <artur.barseghyan@gmail.com>'
