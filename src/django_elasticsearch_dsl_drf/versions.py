@@ -3,7 +3,7 @@ Contains information about the current Elasticsearch version in use,
 including (LTE and GTE).
 """
 
-from packaging.version import Version as LooseVersion
+from packaging.version import Version as LooseVersion, InvalidVersion
 
 __title__ = 'django_elasticsearch_dsl_drf.versions'
 __author__ = 'Artur Barseghyan <artur.barseghyan@gmail.com>'
@@ -32,12 +32,35 @@ def get_elasticsearch_version(default=(2, 0, 0)):
         return default
 
 
-LOOSE_ELASTICSEARCH_VERSION = LooseVersion(
-    '.'.join([str(__n) for __n in get_elasticsearch_version()])
-)
-LOOSE_ELASTICSEARCH_MINOR_VERSION = LooseVersion(
-    '.'.join([str(i) for i in LOOSE_ELASTICSEARCH_VERSION.version[0:2]])
-)
+def _coerce_to_version(value) -> LooseVersion:
+    """Coerce tuples/lists/strings into a packaging Version object.
+
+    `packaging.version.Version` expects a string, so we normalize common forms
+    used by elasticsearch-dsl (e.g. (8, 11, 0)).
+    """
+    if isinstance(value, LooseVersion):
+        return value
+
+    if isinstance(value, (tuple, list)):
+        value = '.'.join(str(v) for v in value)
+    else:
+        value = str(value)
+
+    try:
+        return LooseVersion(value)
+    except InvalidVersion:
+        # Fallback for unexpected values (e.g. non-PEP440-ish strings)
+        return LooseVersion('0')
+
+
+LOOSE_ELASTICSEARCH_VERSION = _coerce_to_version(get_elasticsearch_version())
+
+# `Version.release` is a tuple like (major, minor, patch, ...)
+_release = LOOSE_ELASTICSEARCH_VERSION.release
+_major = _release[0] if len(_release) > 0 else 0
+_minor = _release[1] if len(_release) > 1 else 0
+
+LOOSE_ELASTICSEARCH_MINOR_VERSION = LooseVersion(f"{_major}.{_minor}")
 
 # Loose versions
 LOOSE_VERSIONS = (
@@ -74,7 +97,7 @@ for __i, __v in enumerate(EXACT_VERSIONS):
     __l_cur = globals()['LOOSE_VERSION_{0}'
                         ''.format(LOOSE_VERSIONS[__i].replace('.', '_'))]
     __l_nxt = globals()['LOOSE_VERSION_{0}'
-                        ''.format(LOOSE_VERSIONS[__i+1].replace('.', '_'))]
+                        ''.format(LOOSE_VERSIONS[__i + 1].replace('.', '_'))]
     __var_name = 'ELASTICSEARCH_{0}'.format(__v.replace('.', '_'))
     globals()[__var_name] = (__l_cur <= LOOSE_ELASTICSEARCH_VERSION < __l_nxt)
     __all__.append(__var_name)
@@ -113,4 +136,9 @@ try:
 except NameError:
     pass
 
+del _release
+del _major
+del _minor
+del _coerce_to_version
+del InvalidVersion
 del LooseVersion
